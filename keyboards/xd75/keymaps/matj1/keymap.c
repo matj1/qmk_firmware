@@ -39,11 +39,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_QW] = { /* QWERTY */
-  { KC_ESC,  KC_1,    KC_2,    KC_3,   KC_4,    KC_5,   KC_INS,  KC_PGUP, KC_HOME, KC_6,   KC_7,    KC_8,    KC_9,     KC_0,    KC_BSPC },
-  { KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,    KC_T,   KC_DEL,  KC_PGDN, KC_END,  KC_Y,   KC_U,    KC_I,    KC_O,     KC_P,    KC_ENT  },
-  { KC_LSFT, KC_A,    KC_S,    KC_D,   KC_F,    KC_G,   KC_MINS, KC_GRV,  KC_EQL,  KC_H,   KC_J,    KC_K,    KC_L,     KC_SCLN, KC_RSFT },
-  { KC_BSLS, KC_Z,    KC_X,    KC_C,   KC_V,    KC_B,   KC_LBRC, KC_UP,   KC_RBRC, KC_N,   KC_M,    KC_COMM, KC_DOT,   KC_SLSH, KC_QUOT },
-  { KC_LCTL, KC_LGUI, KC_APP,  KC_LALT,MO(_FN), KC_SPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, KC_RALT, MO(_FN), MO(_KBD), KC_RGUI, KC_RCTL },
+  { KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_INS,  KC_PGUP, KC_HOME, KC_6,   KC_7,    KC_8,    KC_9,     KC_0,    KC_BSPC },
+  { KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_DEL,  KC_PGDN, KC_END,  KC_Y,   KC_U,    KC_I,    KC_O,     KC_P,    KC_ENT  },
+  { KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,   KC_MINS, KC_GRV,  KC_EQL,  KC_H,   KC_J,    KC_K,    KC_L,     KC_SCLN, KC_RSFT },
+  { KC_BSLS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_LBRC, KC_UP,   KC_RBRC, KC_N,   KC_M,    KC_COMM, KC_DOT,   KC_SLSH, KC_QUOT },
+  { KC_LCTL, KC_LGUI, KC_APP,  MO(_FN), KC_LALT, KC_SPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, KC_RALT, MO(_FN), MO(_KBD), KC_RGUI, KC_RCTL },
  },
 
 /* COLEMAK
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { KC_TAB,  KC_Q,    KC_W,    KC_F,   KC_P,    KC_G,   KC_DEL,  KC_PGDN, KC_END,  KC_J,   KC_L,    KC_U,    KC_Y,     KC_SCLN, KC_ENT  },
   { KC_LSFT, KC_A,    KC_R,    KC_S,   KC_T,    KC_D,   KC_MINS, KC_GRV,  KC_EQL,  KC_H,   KC_N,    KC_E,    KC_I,     KC_O,    KC_RSFT },
   { KC_BSLS, KC_Z,    KC_X,    KC_C,   KC_V,    KC_B,   KC_LBRC, KC_UP,   KC_RBRC, KC_K,   KC_M,    KC_COMM, KC_DOT,   KC_SLSH, KC_QUOT },
-  { KC_LCTL, KC_LGUI, KC_APP,  KC_LALT,MO(_FN), KC_SPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, KC_RALT, MO(_FN), MO(_KBD), KC_RGUI, KC_RCTL },
+  { KC_LCTL, KC_LGUI, KC_APP, MO(_FN), KC_LALT, KC_LEFT, KC_DOWN, KC_RGHT, KC_SPC, KC_RALT, MO(_FN), MO(_KBD), KC_RGUI, KC_RCTL },
  },
 
 /* DVORAK
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { KC_TAB,  KC_QUOT, KC_DOT,  KC_COMM, KC_P,    KC_Y,   KC_DEL,  KC_PGDN,  KC_END,  KC_F,   KC_G,    KC_C,    KC_R,     KC_L,    KC_ENT  },
   { KC_LSFT, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,   KC_LBRC, KC_GRAVE, KC_RBRC, KC_D,   KC_H,    KC_T,    KC_N,     KC_S,    KC_RSFT },
   { KC_BSLS, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,   KC_SLSH, KC_UP,    KC_EQL,  KC_B,   KC_M,    KC_W,    KC_V,     KC_Z,    KC_MINS },
-  { KC_LCTL, KC_LGUI, KC_APP,  KC_LALT, MO(_FN), KC_SPC, KC_LEFT, KC_DOWN,  KC_RGHT, KC_SPC, KC_RALT, MO(_FN), MO(_KBD), KC_RGUI, KC_RCTL },
+  { KC_LCTL, KC_LGUI, KC_APP,  MO(_FN), KC_LALT, KC_SPC, KC_LEFT, KC_DOWN,  KC_RGHT, KC_SPC, KC_RALT, MO(_FN), MO(_KBD), KC_RGUI, KC_RCTL },
  },
 
 /* FUNCTION
@@ -109,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   { KC_TAB,  KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS, KC_DEL,  KC_PGDN, KC_END,  KC_TRNS, KC_7,    KC_8,    KC_9,    KC_PMNS, KC_ENT  },
   { KC_LSFT, KC_TRNS, KC_VOLD, KC_MUTE, KC_VOLU, KC_TRNS, KC_PSCR, KC_SLCK, KC_PAUS, KC_TRNS, KC_4,    KC_5,    KC_6,    KC_PPLS, KC_RSFT },
   { KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_UP,   KC_TRNS, KC_DOT,  KC_1,    KC_2,    KC_3,    KC_PAST, KC_PSLS },
-  { KC_LCTL, KC_LGUI, KC_APP,  KC_LALT, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_0,    KC_RALT, KC_TRNS, KC_TRNS, KC_RGUI, KC_RCTL },
- },                    
-                       
-/* KEYBOARD            
+  { KC_LCTL, KC_LGUI, KC_APP,  KC_TRNS, KC_LALT, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_0,    KC_RALT, KC_TRNS, KC_TRNS, KC_RGUI, KC_RCTL },
+ },
+
+/* KEYBOARD
  * .--------------------------------------------------------------------------------------------------------------------------------------.
  * |        |        |        |        |        |        |        |        |        |        |        |        |        |        | RESET  |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
@@ -120,18 +120,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
  * |        |        |        | _DV    |        |        |        |        |        |        |        |        |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |        |        |        | _COL   |        |        |        |        |        |        |        |        |        |        |        |
+ * |        |        |        | _COL   |        |        |        | BL_INC |        |        |        |        |        |        |        |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
+ * |        |        |        |        |        | BL_TOGG|        | BL_DEC |        | BL_TOGG| BL_BRTG|        |        |        |        |
  * '--------------------------------------------------------------------------------------------------------------------------------------'
  */
 
  [_KBD] = { /* KEYBOARD */
-  { KC_NO, KC_NO,   KC_NO, KC_NO,    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RESET },
-  { KC_NO, TO(_QW), KC_NO, KC_NO,    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO },
-  { KC_NO, KC_NO,   KC_NO, TO(_DV),  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO },
-  { KC_NO, KC_NO,   KC_NO, TO(_COL), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO },
-  { KC_NO, KC_NO,   KC_NO, KC_NO,    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO },
+  { KC_NO, KC_NO,   KC_NO, KC_NO,    KC_NO, KC_NO,   KC_NO, KC_NO,  KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, RESET },
+  { KC_NO, TO(_QW), KC_NO, KC_NO,    KC_NO, KC_NO,   KC_NO, KC_NO,  KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO },
+  { KC_NO, KC_NO,   KC_NO, TO(_DV),  KC_NO, KC_NO,   KC_NO, KC_NO,  KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO },
+  { KC_NO, KC_NO,   KC_NO, TO(_COL), KC_NO, KC_NO,   KC_NO, BL_INC, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO },
+  { KC_NO, KC_NO,   KC_NO, KC_NO,    KC_NO, BL_TOGG, KC_NO, BL_DEC, KC_NO, KC_NO, BL_TOGG, KC_NO, KC_NO, KC_NO, KC_NO },
  }
 };
 
