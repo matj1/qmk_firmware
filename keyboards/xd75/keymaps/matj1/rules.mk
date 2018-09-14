@@ -16,3 +16,7 @@
 ifndef QUANTUM_DIR
 	include ../../../../Makefile
 endif
+
+NKRO_ENABLE = yes
+STENO_ENABLE = yes
+MOUSEKEY_ENABLE = no
