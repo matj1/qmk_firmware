@@ -21,5 +21,6 @@
 
 // place overrides here
 #define BACKLIGHT_ENABLE
+#define FORCE_NKRO
 
 #endif

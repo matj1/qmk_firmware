@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     { KC_TAB,  XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_DEL,  KC_PGDN, KC_END,  XXXXXXX, KC_7,    KC_8,    KC_9,    KC_PMNS, KC_ENT  },
     { KC_LSFT, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS, XXXXXXX, KC_4,    KC_5,    KC_6,    KC_PPLS, KC_RSFT },
     { XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, KC_DOT,  KC_1,    KC_2,    KC_3,    KC_PAST, KC_PSLS },
-    { KC_LCTL, KC_LGUI, KC_APP,  XXXXXXX, KC_LALT, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_0,    KC_RALT, XXXXXXX, XXXXXXX, KC_RGUI, KC_RCTL },
+    { KC_LCTL, KC_LGUI, KC_APP,  _______, KC_LALT, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_0,    KC_RALT, _______, _______, KC_RGUI, KC_RCTL },
   },
 
   /* KEYBOARD
@@ -144,18 +144,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
    * |        |        | _STN   | _DV    |        |        |        |        |        |        |        |        |        |        |        |
    * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-   * |        |        |        | _COL   |        |        |        | BL_INC |        |        |        |        |        |        |        |
+   * |        |        |        | _COL   |        |        |        |        |        |        |        |        |        |        |        |
    * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-   * |        |        |        |        |        | BL_TOGG|        | BL_DEC |        | BL_TOGG| BL_BRTG|        |        |        |        |
+   * |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
    * '--------------------------------------------------------------------------------------------------------------------------------------'
    */
 
   [_KBD] = { /* KEYBOARD */
-    { XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, RESET },
-    { XXXXXXX, TO(_QW), XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX },
-    { XXXXXXX, XXXXXXX, TO(_STN), TO(_DV),  XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX },
-    { XXXXXXX, XXXXXXX, XXXXXXX, TO(_COL), XXXXXXX, XXXXXXX,   XXXXXXX, BL_INC, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX },
-    { XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, BL_TOGG, XXXXXXX, BL_DEC, XXXXXXX, XXXXXXX, BL_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX },
+    { XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET   },
+    { XXXXXXX, TO(_QW), XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX },
+    { XXXXXXX, XXXXXXX, TO(_STN), TO(_DV),  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX },
+    { XXXXXXX, XXXXXXX, XXXXXXX,  TO(_COL), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX },
+    { XXXXXXX, XXXXXXX, XXXXXXX,  _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, XXXXXXX, XXXXXXX },
   }
 };
 
