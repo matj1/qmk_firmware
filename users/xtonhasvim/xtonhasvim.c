@@ -15,6 +15,7 @@
  */
 
 #include "xtonhasvim.h"
+#include "fancylighting.h"
 
 /************************************
  * helper foo
@@ -54,23 +55,16 @@ static void ALT(uint16_t keycode) {
 
 
 uint16_t vstate = VIM_START;
-bool yank_was_lines = false;
-bool SHIFTED = false;
-uint32_t mod_override_layer_state = 0;
-uint16_t mod_override_triggering_key = 0;
-bool do_check_kb_clear = false;
+static bool yank_was_lines = false;
+static bool SHIFTED = false;
+static uint32_t mod_override_layer_state = 0;
+static uint16_t mod_override_triggering_key = 0;
 
-void vim_reset(void) {
-  vstate = VIM_START;
-  SHIFTED = false;
-  yank_was_lines = false;
-}
-
-void edit(void) { vstate = VIM_START; layer_on(_EDIT); layer_off(_CMD); }
+static void edit(void) { vstate = VIM_START; layer_clear(); }
 #define EDIT edit()
 
 
-void simple_movement(uint16_t keycode) {
+static void simple_movement(uint16_t keycode) {
   switch(keycode) {
     case VIM_B:
       PRESS(KC_LALT);
@@ -109,10 +103,46 @@ void simple_movement(uint16_t keycode) {
   }
 }
 
-bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
-  if(record->event.pressed && layer_state_is(_CMD) && IS_MOD(keycode)) {
+static void comma_period(uint16_t keycode) {
+  switch (keycode) {
+  case VIM_COMMA:
+    if (SHIFTED) {
+      // indent
+      CMD(KC_LBRACKET);
+    } else {
+      // toggle comment
+      CMD(KC_SLASH);
+    }
+    break;
+  case VIM_PERIOD:
+    if (SHIFTED) {
+      // outdent
+      CMD(KC_RBRACKET);
+    }
+    break;
+  }
+}
+
+__attribute__ ((weak))
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+  return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  /* keymap gets first whack */
+  if(!process_record_keymap(keycode, record)) return false;
+
+  /****** FIREY_RETURN *****/
+  if(record->event.pressed && keycode == FIREY_RETURN) {
+    start_firey_return();
+    TAP(KC_ENT);
+  }
+
+  /****** mod passthru *****/
+  if(record->event.pressed && layer_state_is(vim_cmd_layer()) && (IS_MOD(keycode) || keycode == LSFT(KC_LALT))) {
     mod_override_layer_state = layer_state;
     mod_override_triggering_key = keycode;
+    // TODO: change this to track key location instead
     layer_clear();
     return true; // let the event fall through...
   }
@@ -132,8 +162,15 @@ bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       if(keycode == VIM_START) {
         // entry from anywhere
-        layer_on(_CMD);
+        layer_on(vim_cmd_layer());
         vstate = VIM_START;
+
+        // reset state
+        yank_was_lines = false;
+        SHIFTED = false;
+        mod_override_layer_state = 0;
+        mod_override_triggering_key = 0;
+
         return false;
       }
       switch(vstate) {
@@ -169,7 +206,7 @@ bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
               break;
             case VIM_D:
               if(SHIFTED) {
-                TAP(KC_K);
+                CTRL(KC_K);
               } else {
                 vstate = VIM_D;
               }
@@ -293,19 +330,8 @@ bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
               }
               break;
             case VIM_COMMA:
-              if(SHIFTED) {
-                // indent
-                CMD(KC_LBRACKET);
-              } else {
-                // toggle comment
-                CMD(KC_SLASH);
-              }
-              break;
             case VIM_PERIOD:
-              if(SHIFTED) {
-                // outdent
-                CMD(KC_RBRACKET);
-              }
+              comma_period(keycode);
               break;
           }
           break;
@@ -377,6 +403,7 @@ bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
             simple_movement(keycode);
             CMD(KC_X);
             yank_was_lines = false;
+            vstate = VIM_START;
             break;
           case VIM_D:
             CMD(KC_LEFT);
@@ -460,6 +487,10 @@ bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
               SHIFT(KC_LEFT);  // select to start of next word
               RELEASE(KC_LALT);
               break;
+            case VIM_P:
+              CMD(KC_V);
+              vstate = VIM_START;
+              break;
             case VIM_Y:
               CMD(KC_C);
               TAP(KC_RIGHT);
@@ -470,6 +501,10 @@ bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
             case VIM_ESC:
               TAP(KC_RIGHT);
               vstate = VIM_START;
+              break;
+            case VIM_COMMA:
+            case VIM_PERIOD:
+              comma_period(keycode);
               break;
             default:
               // do nothing
@@ -518,10 +553,18 @@ bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
               TAP(KC_RIGHT);
               vstate = VIM_START;
               break;
+            case VIM_P:
+              CMD(KC_V);
+              vstate = VIM_START;
+              break;
             case VIM_V:
             case VIM_ESC:
               TAP(KC_RIGHT);
               vstate = VIM_START;
+              break;
+            case VIM_COMMA:
+            case VIM_PERIOD:
+              comma_period(keycode);
               break;
             default:
               // do nothing
@@ -597,3 +640,4 @@ bool process_record_xtonhasvim(uint16_t keycode, keyrecord_t *record) {
     return true;
   }
 }
+
